@@ -1,27 +1,24 @@
 class KthLargest {
 public:
-    
-    multiset<int> st;
-    // st.clear();
-    int size=-1;
-    
-    KthLargest(int k, vector<int>& nums) 
-    {
-        for(int i=0; i<nums.size(); i++)
-            st.insert(nums[i]);
+    int size = 0;
+    multiset <int> a;
+    KthLargest(int k, vector<int>& nums) {
         
-        size=k;
+        for(int i = 0; i < nums.size(); ++i){
+            a.insert(nums[i]);
+        }
+        
+        size = k;
+      
     }
     
-    int add(int val) 
-    {
-        st.insert(val);
-        auto it = st.end();
-        it--;
+    int add(int val) {
         
-        for(int i=1; i<size; i++)
+        
+    a.insert(val);
+    auto it = a.end();    
+    for(int i = 0; i < size; ++i)
             it--;
-        
         return *it;
     }
 };
