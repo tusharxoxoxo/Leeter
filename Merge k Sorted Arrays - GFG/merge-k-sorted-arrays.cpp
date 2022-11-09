@@ -22,14 +22,20 @@ class Solution
     vector<int> mergeKArrays(vector<vector<int>> arr, int K)
     {
         //code here
-        vector<int> answer;
+        // vector<int> answer;
+        priority_queue <int, vector<int>, greater<int>> g;  
         for(int i = 0; i < K; ++i){
             for(int j = 0; j < K; ++j){
-                answer.push_back(arr[i][j]); 
+                g.push(arr[i][j]); 
             }    
         }
+        vector<int> answer;
+        for(int i = 0; i < K * K; ++i){
+            answer.push_back(g.top());
+            g.pop();
+        }
         
-        sort(answer.begin(), answer.end());
+        // sort(answer.begin(), answer.end());
         return answer;
     }
 };
